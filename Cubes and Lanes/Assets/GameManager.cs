@@ -1,18 +1,33 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
-    // Start is called before the first frame update
+    private int score;
+    [SerializeField] private TMP_Text scoreText;
+    public static event Action EnemyCrossed;
+
     void Start()
     {
-        
+        EnemyCrossed += AddScore;
     }
 
-    // Update is called once per frame
-    void Update()
+    void OnTriggerEnter(Collider collider)
     {
-        
+        EnemyCrossed?.Invoke();
+    }
+
+    void AddScore()
+    {
+        score++;
+        scoreText.text = $"SCORE {score}";
+    }
+
+    void OnDisable()
+    {
+        EnemyCrossed -= AddScore;
     }
 }

@@ -27,7 +27,7 @@ public class EnemySpawner : MonoBehaviour
         {
             if(i == randomLaneIndex)
                 continue;
-            // Instantiate(Enemy, Spawners[i].transform.position, Quaternion.identity);
+                
             GameObject obj = EnemyPool.Dequeue();
             obj.transform.position = Spawners[i].transform.position;
             obj.SetActive(true);

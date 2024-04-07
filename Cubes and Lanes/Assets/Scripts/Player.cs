@@ -1,10 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
-using UnityEditor;
 using UnityEngine;
-using UnityEngine.TextCore;
 
 
 public class Player : MonoBehaviour
@@ -34,7 +31,7 @@ public class Player : MonoBehaviour
                 lanes[i].isOccupied = false;
             }
         }
-        // Debug.Log($"{lanes[0].isOccupied} {lanes[1].isOccupied} {lanes[2].isOccupied}");
+
         if(lanes[currentLaneIndex].isOccupied)
         {
             ChangeLane();
@@ -46,15 +43,9 @@ public class Player : MonoBehaviour
     {
         switch (currentLaneIndex)
         {
-            //if the player is on Left lane
             case 0: 
                 MoveRight();
-                if(CheckLane(currentLaneIndex))
-                {
-                    MoveRight();
-                }
                 break;
-            //if player in on the Middle lane
             case 1:
                 if(CheckLane(currentLaneIndex - 1))
                 {
@@ -65,13 +56,8 @@ public class Player : MonoBehaviour
                     MoveLeft();
                 }
                 break;
-            //if player in on the Right lane
             case 2:
                 MoveLeft();
-                if(CheckLane(currentLaneIndex))
-                {
-                    MoveLeft();
-                }
                 break;
         }
     }
