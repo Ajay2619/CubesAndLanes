@@ -1,8 +1,6 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 
 public class Player : MonoBehaviour
 {
@@ -47,14 +45,10 @@ public class Player : MonoBehaviour
                 MoveRight();
                 break;
             case 1:
-                if(CheckLane(currentLaneIndex - 1))
-                {
+                if(Random.Range(1,3) % 2 == 0)
                     MoveRight();
-                }
                 else
-                {
                     MoveLeft();
-                }
                 break;
             case 2:
                 MoveLeft();
